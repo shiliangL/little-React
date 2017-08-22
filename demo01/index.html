@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="../build/react.js"></script>
+  <script src="../build/react-dom.js"></script>
+  <script src="../build/browser.min.js"></script>
+</head>
+<body>
+  <div id="Root"></div>
+  <script type="text/babel">
+  class LikeBnt extends React.Component {
+    constructor(props) {
+      super(props)
+    }
+    render(){
+      return <div>👍</div>
+    }
+  }
+
+  ReactDOM.render(
+    <LikeBnt />,
+    document.getElementById('Root')
+  )
+
+  </script>
+</body>
+
+</html>
