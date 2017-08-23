@@ -10,7 +10,6 @@ class App extends Component {
     super(props)
     this.state = {
       text: '关注',
-      sb : 'xxx'
     }
   }
   handClick(e){
@@ -20,14 +19,19 @@ class App extends Component {
     })
   }
 
-  testFn(sb){
-    console.log('xxx');
+  testFn(name){
+    console.log('粑粑');
+    console.log(name,'接受到了子组件传的东西');
+    this.setState({
+      text: name
+    })
   }
 
   render(){
     return <div>
+    <h2>测试双向数据:{this.state.text}</h2>
     <button onClick={this.handClick.bind(this)}>{this.state.text} 观察 </button>
-    <DoWell text={this.state.text} onChange={this.testFn} />
+    <DoWell text={this.state.text} onChange={this.testFn.bind(this)} />
   </div>
   }
 }
