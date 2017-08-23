@@ -12,9 +12,21 @@
   class LikeBnt extends React.Component {
     constructor(props) {
       super(props)
+      this.state = {
+        status: '点赞'
     }
+
+  componentDidMount() {
+
+  }
+  handleClick(){
+    console.log(this.state);
+  }      
+
     render(){
-      return <div>👍</div>
+      return <div>
+       <button> 👍 </button>
+      </div>
     }
   }
 
