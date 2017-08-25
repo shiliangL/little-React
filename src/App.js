@@ -4,12 +4,36 @@ import './App.scss';
 import './static/bootstrap.css'
 import 'element-theme-default';
 import DoWell from './component/doWell'
+import RenderList from './component/dateList'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
       text: '关注',
+      data : [
+        {
+          id: "1",
+          name: "微信支付",
+          code: null
+        }, {
+          id: "2",
+          name: "支付宝支付",
+          code: null
+        }, {
+          id: "3",
+          name: "人民币",
+          code: null
+        }, {
+          id: "4",
+          name: "银行转账",
+          code: null
+        }, {
+          id: "5",
+          name: "支票",
+          code: null
+        }
+      ]
     }
   }
   handClick(e){
@@ -19,23 +43,18 @@ class App extends Component {
     })
   }
 
-  testFn(name){
-    console.log('粑粑');
-    console.log(name,'接受到了子组件传的东西');
-    this.setState({
-      text: name
-    })
+delItem(index){
+    this.state.data.splice(index , 1)
+    this.setState({data:this.state.data})
   }
 
-  render(){
+render(){
     return <div>
-    <h2>测试双向数据:{this.state.text}</h2>
-    <button onClick={this.handClick.bind(this)}>{this.state.text} 观察 </button>
-    <DoWell text={this.state.text} onChange={this.testFn.bind(this)} />
+      <RenderList data={this.state.data} delItem={this.delItem.bind(this)}/>
   </div>
   }
 }
 
 export default App
 
-// 23 --需要理解  组件之间 事件的关系  给子组件添加事件无法触发
+// 23 --需要理解  组件之间 事件的关系  给子组件添加事件无法触发 组件数据传递以及 坑位
