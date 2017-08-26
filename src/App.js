@@ -6,10 +6,14 @@ import 'element-theme-default';
 import DoWell from './component/doWell'
 import RenderList from './component/dateList'
 
+//组件 第一天
+import Radio from './component-day/Radio/Radio'
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      value: 1,
       text: '关注',
       data : [
         {
@@ -35,12 +39,8 @@ class App extends Component {
         }
       ]
     }
-  }
-  handClick(e){
-    e.preventDefault()
-    this.setState({
-      text: this.state.text === '关注' ? '取消' : '关注'
-    })
+
+
   }
 
 delItem(index){
@@ -48,9 +48,14 @@ delItem(index){
     this.setState({data:this.state.data})
   }
 
+onChange(value){
+
+}
+
 render(){
     return <div>
-      <RenderList data={this.state.data} delItem={this.delItem.bind(this)}/>
+    <Radio checked={this.state.value === 1} onChange={this.onChange.bind(this)}> 备选项 </Radio>
+    <RenderList data={this.state.data} delItem={this.delItem.bind(this)}/>
   </div>
   }
 }
