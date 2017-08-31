@@ -5,7 +5,12 @@ class ComponentList extends Component {
     super(props)
   }
   render() {
-    return <div>输出列表</div>
+    return <div className='comment'>
+        <div className='comment-user'>
+          <span>{this.props.comment.username} </span>：
+        </div>
+        <p>{this.props.comment.content}</p>
+      </div>
   }
 
 }
