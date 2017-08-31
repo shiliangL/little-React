@@ -11,8 +11,9 @@ class DiscussIndex extends Component {
     }
   }
   banckInput(n){
-    console.log(n);
-   
+
+  debugger;
+    console.log(this.state.listArray.push(n));
   }
   render(){
     return <div>
