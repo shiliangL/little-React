@@ -1,29 +1,17 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom'
-import './App.scss';
-import './static/bootstrap.css'
-import 'element-theme-default';
-import DoWell from './component/doWell'
-import RenderList from './component/dateList'
-import ComputerApp from './component/Shutdown'
-
-import DiscussIndex from '../src/page/discuss/DiscussIndex'
-
-//组件 第一天
-import Radio from './component-day/Radio/Radio'
+import AudioPlayer from '@/components/AudioPlayer' 
 
 class App extends Component {
-  constructor(props) {
-    super(props)
-
-  }
-render(){
-    return <div>
-    <DiscussIndex />
-  </div>
+  render() {
+    return (
+      <div className="App">
+        <header className="App-header">
+          Learn React
+          <AudioPlayer picUrl={ 'http://p2.music.126.net/6y-UleORITEDbvrOLV0Q8A==/5639395138885805.jpg' } url={ ' http://m10.music.126.net/20181010170945/1c12eb36ee5d4d93f794c5cb9690a7de/ymusic/1a03/c72c/f3cc/7670a500925a743eafaa11d96a022b08.mp3 '} />
+        </header>
+      </div>
+    );
   }
 }
 
-export default App
-
-// 23 --需要理解  组件之间 事件的关系  给子组件添加事件无法触发 组件数据传递以及 坑位
+export default App;
