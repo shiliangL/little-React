@@ -5,6 +5,7 @@ import AudioPlayer from '@/components/AudioPlayer'
 import Home from "@/views/Home";
 import Stuff from "@/views/Stuff";
 import Contact from "@/views/Contact";
+import PageDetail from "@/views/PageDetail";
 
 
 
@@ -23,6 +24,7 @@ class LayOut extends Component {
           <div className="content">
             <Route exact path="/" component={Home} />
             <Route path="/stuff" component={Stuff} />
+            <Route path="/pageDetail/:id" component={PageDetail} />
             <Route path="/contact" component={Contact} />
           </div>
 

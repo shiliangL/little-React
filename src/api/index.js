@@ -17,3 +17,13 @@ export function fetchMusic(params) {
     params
   })
 }
+
+// 获取热门推荐
+export function fetchHot(params) {
+  return service({
+    url: '/personalized',
+    method: 'get',
+    params
+  })
+}
+
