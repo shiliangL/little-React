@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
+import 'normalize.css/normalize.css'// CSS resets
 import '@/styles/App.scss';
 
 
