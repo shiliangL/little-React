@@ -17,7 +17,11 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 700px;
-  background-color: #292a2b;
+  background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1539338113473&di=0fe46753d77284a6538858bf9858d42b&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2Fd0e62c2253f57926128817ac9119ca18772f941c.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f4f4f6; // filter: blur(10px);
+  box-shadow: 0 1px 1px hsla(0, 0%, 100%, .3);
 }
 
 .App {
@@ -25,6 +29,8 @@ body {
   height: 670px;
   border-radius: 4px;
   background: #f4f4f6;
+  position: relative;
+  z-index: 50;
   .container {
     box-sizing: border-box;
     width: 100%;

@@ -1,3 +1,5 @@
+import 'normalize.css/normalize.css'// CSS resets
+import '@/styles/App.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
