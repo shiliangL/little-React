@@ -2,8 +2,10 @@
 
 import React, { Component } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { fetchHot } from '@/api/index.js';
+import { fetchNewSong } from '@/api/index.js';
 import { NavLink } from "react-router-dom";
+import LoadingImgs from '@/components/LoadingImgs' 
+
 
 class Home extends Component {
 
@@ -19,8 +21,7 @@ class Home extends Component {
   }
 
   fetchData() {
-    console.log('x')
-    fetchHot().then(({ result }) => {
+    fetchNewSong({ limit: 10 }).then(({ result }) => {
       console.log(result)
       this.setState({ dataList: result })
     }).catch(e => {
@@ -46,11 +47,11 @@ class Home extends Component {
             return <div className="card" key={item.id}>
               <div className="album-img">
                 <NavLink to={`/pageDetail/${item.id}`}>
-                  <img src={item.picUrl} alt="" />
+                  <LoadingImgs imgUrl={item.picUrl} altText="card-img" />
                 </NavLink>
               </div>
               <p className="title"> { item.name }</p>
-              <p className="creator"> {item.copywriter}</p>
+              {/* <p className="creator"> {item.copywriter}</p> */}
             </div>
             })
           }

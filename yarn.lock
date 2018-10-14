@@ -5707,6 +5707,17 @@ mkdirp@0.5.1, mkdirp@0.5.x, "mkdirp@>=0.5 0", mkdirp@^0.5.0, mkdirp@^0.5.1, mkdi
   dependencies:
     minimist "0.0.8"
 
+mobx-react@^5.2.8:
+  version "5.2.8"
+  resolved "http://registry.npm.taobao.org/mobx-react/download/mobx-react-5.2.8.tgz#059c7f29254d7cd36e103d79113103b40348d3bf"
+  dependencies:
+    hoist-non-react-statics "^2.5.0"
+    react-lifecycles-compat "^3.0.2"
+
+mobx@^5.5.0:
+  version "5.5.0"
+  resolved "http://registry.npm.taobao.org/mobx/download/mobx-5.5.0.tgz#a29f6a7526eed28edcd3f0e921a1edaa8bb22575"
+
 moment@2.x, moment@^2.19.3:
   version "2.22.2"
   resolved "http://registry.npm.taobao.org/moment/download/moment-2.22.2.tgz#3c257f9839fc0e93ff53149632239eb90783ff66"

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import AudioPlayer from '@/components/AudioPlayer' 
+// import { Scrollbars } from 'react-custom-scrollbars';
 
 import Home from "@/views/Home";
 import Stuff from "@/views/Stuff";
@@ -15,7 +16,6 @@ class LayOut extends Component {
     return (
       <HashRouter>
         <div className="LayOut">
-          <h1>Simple SPA</h1>
           <ul className="header">
             <li><NavLink to="/">Home</NavLink></li>
             <li><NavLink to="/stuff">Stuff</NavLink></li>
