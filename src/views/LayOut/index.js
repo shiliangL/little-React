@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import AudioPlayer from '@/components/AudioPlayer' 
-// import { Scrollbars } from 'react-custom-scrollbars';
-
-import Home from "@/views/Home";
-import Stuff from "@/views/Stuff";
-import Contact from "@/views/Contact";
-import PageDetail from "@/views/PageDetail";
-
+import { Scrollbars } from 'react-custom-scrollbars';
+import { Home, Stuff, Contact, PageDetail } from "@/views";
 
 
 class LayOut extends Component {
@@ -22,10 +17,21 @@ class LayOut extends Component {
             <li><NavLink to="/contact">Contact</NavLink></li>
           </ul>
           <div className="content">
-            <Route exact path="/" component={Home} />
-            <Route path="/stuff" component={Stuff} />
-            <Route path="/pageDetail/:id" component={PageDetail} />
-            <Route path="/contact" component={Contact} />
+            {/* <Scrollbars
+              autoHeight
+              autoHeightMin={300}
+              autoHeightMax={420}
+              autoHide
+              // Hide delay in ms
+              autoHideTimeout={1000}
+              // Duration for hide animation in ms.
+              autoHideDuration={200}
+            > */}
+              <Route exact path="/" component={Home} />
+              <Route path="/stuff" component={Stuff} />
+              <Route path="/pageDetail/:id" component={PageDetail} />
+              <Route path="/contact" component={Contact} />
+            {/* </Scrollbars> */}
           </div>
 
           <AudioPlayer/>

@@ -10,7 +10,7 @@ import LayOut from '@/views/LayOut'
 class App extends Component {
 
   componentDidMount() {
-    console.log(this.props.num,'xxx')
+    
   }
   
 
