@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ListPage from '@/components/ListPage'
-import { songDetail } from '@/api/index.js';
+import { songDetail, fetchMusic } from '@/api/index.js';
 
 class PageDetail extends Component {
 
@@ -27,7 +27,18 @@ class PageDetail extends Component {
     })
   }
 
+  fetchMusic( id ){
+    fetchMusic({ id }).then(({ data})=>{
+      console.log(data)
+    }).catch(e=>{
+      console.log(e)
+    })
+  }
 
+  clickRow(item, index){
+    console.log(item,index)
+    this.fetchMusic(item.id )
+  }
 
   render() {
     const { resultData } = this.state
@@ -50,7 +61,7 @@ class PageDetail extends Component {
           </div>
         </div>
       </div>
-      <ListPage data={ data.tracks } />
+        <ListPage clickRow={(item, index) => this.clickRow(item, index) } data={ data.tracks } />
       </div>
     }
     return (

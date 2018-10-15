@@ -1,23 +1,47 @@
 import React, { Component } from 'react'
+import { connect } from "react-redux";
 import { Icon } from "antd";
 import './index.scss'
 
-export default class AudioPlayer extends Component {
-
+@connect(
+  (playList)=>{
+    console.log(playList,'AudioPlayer')
+    return {
+      data:playList
+    }
+  }
+)
+class AudioPlayer extends Component {
   
   constructor(props) {
     super(props)
     this.state = {
+      playIcon: 'play-circle',
       curProgressBarWidth: 0,
       isPlaying: false
     }
   }
 
   clickToPlay = ()=>{
-    this.setState({ isPlaying: !this.state.isPlaying })
-    this.state.isPlaying ? this.audio.play() : this.audio.pause()
-    this.props.isPlaying(this.state.isPlaying )
+    //检查资源文件是否可以播放
+    if (this.audio.paused || this.audio.ended) {
+      this.toPlay()
+    } else {
+      this.toPause()
+    }
   }
+
+  toPlay = () => {
+    // 资源无效异常处理存在问题
+    this.audio.play()
+    this.setState({ playIcon: 'pause-circle' })
+  }
+
+  toPause = () => {
+    this.audio.pause()
+    this.setState({ playIcon: 'play-circle' })
+  }
+
  
   syncTime(){
     const currentTime = this.audio.currentTime
@@ -40,23 +64,30 @@ export default class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    console.log(this.audio)
+    console.log(this.props.data.playList[0],'sbsbbsbs')
   }
-
+  
   
   render() {
-
-    const { isPlaying, curProgressBarWidth } = this.state
-    const { url, picUrl, next, pre } = this.props
-
+    
+    const { isPlaying, curProgressBarWidth, playIcon } = this.state
+    const { next, pre, data } = this.props
+    
     return (
       <div className="AudioPlayer">
+
+        <div className="progress">
+          <div className="progress-bar" ref={node => this.progressBar = node} onClick={(e) => { this.setCurTime(e) }}>
+            <div style={{ width: `${curProgressBarWidth}` }} className="current-progress"></div>
+          </div>
+        </div>
+
         <div className="player-album"> 
-          <img src={ picUrl } alt="" /> 
+          <img src={data.playList[0].picUrl} alt="" /> 
         </div>
         <div className="player-btns"> 
           <Icon onClick={() => pre()  }  type="fast-backward" theme="outlined" />
-          <Icon onClick={this.clickToPlay} type={ isPlaying ? 'play-circle' :'pause-circle' }  theme="outlined" />
+          <Icon onClick={this.clickToPlay} type={ playIcon }  theme="outlined" />
           <Icon onClick={() => next() }  type="fast-forward" theme="outlined" />
         </div>
         <div className="player-state">
@@ -79,7 +110,7 @@ export default class AudioPlayer extends Component {
           }
           onEnded ={
             ()=> {
-              next()
+              // next()
               console.log('播放完毕')
             }
           }
@@ -88,9 +119,10 @@ export default class AudioPlayer extends Component {
               console.log(e)
             }
           }
-          src={ url }>
+          src={ data.playList[0].mp3 }>
         </audio>
       </div>
     )
   }
 }
+export default AudioPlayer
