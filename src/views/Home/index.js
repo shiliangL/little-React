@@ -36,7 +36,7 @@ class Home extends Component {
         <Scrollbars
           autoHeight
           autoHeightMin={400}
-          autoHeightMax={450}
+          autoHeightMax={430}
           autoHide
           autoHideTimeout={1000}
           autoHideDuration={200}

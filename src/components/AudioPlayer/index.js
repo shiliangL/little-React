@@ -6,7 +6,6 @@ import './index.scss'
 
 @connect(
   (state)=>{
-    console.log(state.playList,'AudioPlayer')
     return {
       data: state.playList
     }

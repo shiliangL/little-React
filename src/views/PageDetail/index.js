@@ -4,6 +4,7 @@ import { songDetail, fetchMusic } from '@/api/index.js';
 import { connect } from 'react-redux';
 import { clickToPlay } from '@/redux/actions'
 import { Scrollbars } from 'react-custom-scrollbars';
+import LoadingPage from '@/components/LoadingPage' 
 
 
 
@@ -87,7 +88,7 @@ class PageDetail extends Component {
     return (
       <div className="PageDetail">
         {
-          resultData ? page(resultData) : '加载中....'
+          resultData ? page(resultData) : <LoadingPage/>
         }
         {/* <div className="pageHeader"></div>
         <div className="pageHeader"></div>
