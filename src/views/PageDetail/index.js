@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import ListPage from '@/components/ListPage'
 import { songDetail, fetchMusic } from '@/api/index.js';
+import { connect } from 'react-redux';
+import { clickToPlay } from '@/redux/actions'
+import { Scrollbars } from 'react-custom-scrollbars';
 
+
+
+@connect(
+  ()=>({}),
+  { clickToPlay }
+)
 class PageDetail extends Component {
 
   constructor(props) {
@@ -14,8 +23,6 @@ class PageDetail extends Component {
   componentDidMount(){
     const { id } = this.props.match.params
     if (!id) return
-    // this.props.history.goBack()
-    console.log(this.props)
     this.fetchDetail(id)
   }
 
@@ -29,14 +36,16 @@ class PageDetail extends Component {
 
   fetchMusic( id ){
     fetchMusic({ id }).then(({ data})=>{
-      console.log(data)
+      if (data.length>0) {
+        data.map3 = data.url
+        this.props.clickToPlay(data[0])
+      }
     }).catch(e=>{
       console.log(e)
     })
   }
 
   clickRow(item, index){
-    console.log(item,index)
     this.fetchMusic(item.id )
   }
 
@@ -61,7 +70,18 @@ class PageDetail extends Component {
           </div>
         </div>
       </div>
+        <Scrollbars
+            autoHeight
+            autoHeightMin={366}
+            autoHeightMax={366}
+            autoHide
+            // Hide delay in ms
+            autoHideTimeout={1000}
+            // Duration for hide animation in ms.
+            autoHideDuration={200}
+          >
         <ListPage clickRow={(item, index) => this.clickRow(item, index) } data={ data.tracks } />
+        </Scrollbars>
       </div>
     }
     return (

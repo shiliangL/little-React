@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route, NavLink, HashRouter } from "react-router-dom";
 import AudioPlayer from '@/components/AudioPlayer' 
-import { Scrollbars } from 'react-custom-scrollbars';
+// import { Scrollbars } from 'react-custom-scrollbars';
 import { Home, Stuff, Contact, PageDetail } from "@/views";
 
 
@@ -19,8 +19,8 @@ class LayOut extends Component {
           <div className="content">
             {/* <Scrollbars
               autoHeight
-              autoHeightMin={300}
-              autoHeightMax={420}
+              autoHeightMin={400}
+              autoHeightMax={560}
               autoHide
               // Hide delay in ms
               autoHideTimeout={1000}

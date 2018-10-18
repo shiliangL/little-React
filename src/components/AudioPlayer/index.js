@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
+import { notification } from 'antd';
 import { Icon } from "antd";
 import './index.scss'
 
 @connect(
-  (playList)=>{
-    console.log(playList,'AudioPlayer')
+  (state)=>{
+    console.log(state.playList,'AudioPlayer')
     return {
-      data:playList
+      data: state.playList
     }
   }
 )
@@ -64,13 +65,13 @@ class AudioPlayer extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.data.playList[0],'sbsbbsbs')
+    console.log(this.props,'sbsbsbbsb')
   }
   
   
   render() {
     
-    const { isPlaying, curProgressBarWidth, playIcon } = this.state
+    const { curProgressBarWidth, playIcon } = this.state
     const { next, pre, data } = this.props
     
     return (
@@ -83,7 +84,7 @@ class AudioPlayer extends Component {
         </div>
 
         <div className="player-album"> 
-          <img src={data.playList[0].picUrl} alt="" /> 
+          {/* <img src={data.playList[0].picUrl} alt="" />  */}
         </div>
         <div className="player-btns"> 
           <Icon onClick={() => pre()  }  type="fast-backward" theme="outlined" />
@@ -93,18 +94,19 @@ class AudioPlayer extends Component {
         <div className="player-state">
           <div className="player-state-top"> </div>
           <div className="player-state-bottom"> 
-            <div className="progress-bar" ref={node => this.progressBar = node} onClick={(e) => {this.setCurTime(e) }}>
-              <div style={{ width: `${curProgressBarWidth}` }} className="current-progress"></div>
-            </div>
+             
           </div>
         </div>
         <div className="player-voice"> </div>
-        <div className="player-extra"> </div>
+        <div className="player-extra">
+          <Icon type="menu-fold" theme="outlined" />
+        </div>
 
         <audio 
           ref={
             audio => this.audio = audio  
           }
+          autoPlay
           onTimeUpdate={
             ()=> this.syncTime()
           }
@@ -116,10 +118,14 @@ class AudioPlayer extends Component {
           }
           onError={
             e=> {
+              notification.open({
+                message: '歌曲资源加载失败',
+                description: 'This is the content of the notification',
+              });
               console.log(e)
             }
           }
-          src={ data.playList[0].mp3 }>
+          src={ data.mp3 }>
         </audio>
       </div>
     )

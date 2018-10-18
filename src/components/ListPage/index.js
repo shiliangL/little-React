@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { formatCurrentTime } from '@/utlis/formatTime.js';
 
 class ListPage extends Component {
   render() {
@@ -9,7 +10,7 @@ class ListPage extends Component {
           return <li key={index} className="item" onClick={() => clickRow(item, index) }>
             <div> {index+1} - {item.name}</div>
             <div>{item.name}</div>
-            <div>{item.publishTime}</div>
+            <div>{formatCurrentTime(item.publishTime)}</div>
             {/* <div>{item.al.name}</div> */}
           </li>
         })
