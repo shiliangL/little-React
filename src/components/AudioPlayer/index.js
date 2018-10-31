@@ -67,7 +67,11 @@ class AudioPlayer extends Component {
     console.log(this.props,'sbsbsbbsb')
   }
   
-  
+  clickTogglePlayList(){
+    console.log('xx')
+  }
+
+
   render() {
     
     const { curProgressBarWidth, playIcon } = this.state
@@ -98,7 +102,7 @@ class AudioPlayer extends Component {
         </div>
         <div className="player-voice"> </div>
         <div className="player-extra">
-          <Icon type="menu-fold" theme="outlined" />
+          <Icon onClick={this.clickTogglePlayList } type="menu-fold" theme="outlined" />
         </div>
 
         <audio 
