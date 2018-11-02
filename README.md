@@ -56,3 +56,4 @@ npm install --save-dev @babel/plugin-proposal-decorators
 
 
 ```
+代理接口   // "proxy": "http://39.108.68.85:3001/",

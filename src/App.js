@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import LayOut from '@/views/LayOut' 
+
+import RoutePage from '@/router' 
+// import LayOut from '@/views/LayOut' 
 
 
  
@@ -17,8 +19,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <LayOut />
+      <div>
+        <RoutePage />
       </div>
     );
   }
